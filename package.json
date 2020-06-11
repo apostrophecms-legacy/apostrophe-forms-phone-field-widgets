@@ -1,0 +1,27 @@
+{
+  "name": "apostrophe-forms-phone-field-widgets",
+  "version": "1.0.0",
+  "description": "Fully validated phone fields for apostrophe-forms, with a country picker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apostrophecms/apostrophe-forms-phone-field-widgets.git"
+  },
+  "keywords": [
+    "apostrophecms",
+    "forms"
+  ],
+  "author": "Apostrophe Technologies",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/apostrophecms/apostrophe-forms-phone-field-widgets/issues"
+  },
+  "homepage": "https://github.com/apostrophecms/apostrophe-forms-phone-field-widgets#readme",
+  "dependencies": {
+    "i18n-iso-countries": "^6.0.0",
+    "libphonenumber-js": "^1.7.52"
+  }
+}
