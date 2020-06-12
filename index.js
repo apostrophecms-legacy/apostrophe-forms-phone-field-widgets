@@ -10,25 +10,9 @@ const isoCountries = require("i18n-iso-countries");
 module.exports = {
   extend: 'apostrophe-forms-base-field-widgets',
   label: 'Phone Number Input',
-  addFields: [
-    {
-      name: 'placeholder',
-      label: 'Placeholder',
-      type: 'string',
-      help: "Text to display in the field before someone uses it (e.g., to provide additional directions)."
-    }
-  ],
   construct: function (self, options) {
-    options.arrangeFields = options.arrangeFields.map(group => {
-      if (group.name === 'settings') {
-        group.fields.push('placeholder');
-      }
-
-      return group;
-    });
 
     self.sanitizeFormField = function (req, form, widget, input, output) {
-      console.log('in sanitizeFormField');
       const value = self.apos.launder.string(input[widget.fieldName]);
       if (value.length) {
         try {
@@ -44,9 +28,7 @@ module.exports = {
             };
           }
           output[widget.fieldName] = phoneNumber.formatInternational();
-          console.log(output[widget.fieldName]);
         } catch (error) {
-          console.log(error);
           const messages = {
             INVALID_COUNTRY: 'You must include a country code. If you aren\'t sure, use the country selector.',
             TOO_SHORT: 'Please enter the complete phone number.',
@@ -76,10 +58,6 @@ module.exports = {
       }
     };
 
-    self.on('apostrophe-pages:beforeSend', 'createSingletonForCountryData', function(req) {
-      self.pushCreateSingleton(req, 'always');
-    });
-
     self.apiRoute('get', 'countries', function(req, res, next) {
       const callingCodesByCountry = {};
       for (const country of getCountries()) {
@@ -93,8 +71,6 @@ module.exports = {
           locale = workflow.defaultLocale;
           countries = isoCountries.getNames(locale);
         }
-      } else {
-        console.log('good first try');
       }
       if (!Object.keys(countries).length) {
         countries = isoCountries.getNames('en');
