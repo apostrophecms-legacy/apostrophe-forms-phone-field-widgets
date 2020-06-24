@@ -4,7 +4,7 @@
   "description": "Fully validated phone fields for apostrophe-forms, with a country picker",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,18 @@
   "dependencies": {
     "i18n-iso-countries": "^6.0.0",
     "libphonenumber-js": "^1.7.52"
+  },
+  "peerDependencies": {
+    "apostrophe-forms": "^1.8.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.15.0",
+    "eslint-config-apostrophe": "^3.1.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "mocha": "^6.1.4"
   }
 }

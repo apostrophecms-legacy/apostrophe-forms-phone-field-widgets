@@ -11,8 +11,8 @@ apos.utils.widgetPlayers['apostrophe-forms-phone-field'] = function(el, widget, 
   });
   apos.utils.get('/modules/apostrophe-forms-phone-field-widgets/countries', {}, function(err, data) {
     if (err || (data.status !== 'ok')) {
-      console.error(err);
-      return;
+      // eslint-disable-next-line no-console
+      console.log(err);
     }
     var i;
     var iso = Object.keys(data.countries);
